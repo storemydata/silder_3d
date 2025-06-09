@@ -9,9 +9,9 @@
 
 body{
     background-image: url("Images/bg.png");
-    background-repeat: no repeat; 
+    background-repeat: no-repeat; 
     background-attachment: fixed;
-    background-size: auto 90%; 
+    background-size: 100% auto; 
 } 
 
 html, body {
@@ -62,7 +62,29 @@ html, body {
 .banner .slider .item img{
     width: 100%;
     height: 100%;
+    aspect-ratio: 1/1;
     object-fit: cover;
+}
+
+.slider .item {
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.slider .item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Gray overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    border-radius: 0.5rem;
+}
+
+.slider .item:hover::after {
+    opacity: 1;
 }
 
 .banner .content{
@@ -132,4 +154,56 @@ html, body {
     background-repeat: no-repeat;
     background-position: bottom center;
     z-index: 2;
+}
+
+.popup-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90vw, 600px);
+    height: 80%;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    padding: 2rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: popupFade 0.3s ease-in-out;
+}
+
+.popup-card img {
+    width: 80%;
+    height: 80%;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.popup-card h3 {
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.popup-card p {
+    font-family: 'Poppins';
+    font-size: 1rem;
+    text-align: center;
+}
+
+.popup-card .close-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #252838;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+@keyframes popupFade {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
 }

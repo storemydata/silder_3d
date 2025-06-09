@@ -1,3 +1,2 @@
 # silder_3d
-This is currently CSS-Only Slider project.
-Will be updating in the future with javascript integration.
+A 3-D slider of images made up of HTML,CSS and Javascript
